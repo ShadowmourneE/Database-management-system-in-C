@@ -1,5 +1,3 @@
-//laba basa danih
-
 #include <stdio.h>
 #include <process.h>
 #include <memory.h>
@@ -9,17 +7,15 @@ FILE *Sfl;
 FILE *Sind;
 FILE *SP;
 
-
-
 struct elementM{
 short Sadderess; //first S id
 char data[30]; 
 };
 
 struct indexM{
-short id;  // -2 = last element mode
-short isA;  // if id == -2  last element adress (in S.ind)
-short address; // if id == -2  last element adress (in S.fl)
+short id;  
+short isA;  
+short address; 
 };
 
 struct elementS{
@@ -29,10 +25,6 @@ short prev;
 short next;
 char data[24];
 };
-
-void updateFile(unsigned char){
-			
-}
 
 int getM(short id, char* target){
 elementM M;
@@ -48,7 +40,6 @@ do{
 }while(Index.id!=id); //find
 
 if(Index.isA == 0){
-//...  physical ops
 return -1;
 }
 
@@ -112,7 +103,6 @@ do{
 }while(iM.id!=mId); //find
 
 if(iM.isA == 0){
-//...  physical ops
 return -1;
 }
 
@@ -208,7 +198,6 @@ do{
 }while(iM.id!=mId); //find
 
 if(iM.isA == 0){
-//...  physical ops
 return -1;
 }
 
@@ -231,7 +220,8 @@ fflush(Sfl);
 return iM.id;
 }
 //ok
-int updateS(short mId,short sId, char* data){
+int 
+S(short mId,short sId, char* data){
 elementM M;
 elementS S;
 indexM iM;
@@ -374,9 +364,6 @@ if(M.Sadderess == -1){
 	if(fwrite(&M,sizeof(elementM),1,Sfl)== 0)	return -1;
 }
 else{
-	//fseek(SP, M.Sadderess * sizeof(elementS), SEEK_SET);
-	//if(fread(&S,sizeof(elementS),1,SP) == 0) exit(0);
-
 		short addr = M.Sadderess;
 
 		while(1){
@@ -544,15 +531,6 @@ printf("command not found\n");
 
 
 }
-
-
-//char texts[50];
-//getM(5,texts,0);
-//delM(5);
-//updateS(3,2,"aaa,fig");
-//int a = getS(3,2,texts,0);//insertS(3,2,"yeeeeess!!!");
-
-//printf("%d",a);
 system("pause");
 
 }
